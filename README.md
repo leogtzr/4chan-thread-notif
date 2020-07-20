@@ -39,3 +39,5 @@ go build -o "4chan-thread-notifs"
 ```bash
 ./4chan-thread-notifs -board lit -id 15897101 -post 15899180
 ```
+
+![img](imgs/img.png)
