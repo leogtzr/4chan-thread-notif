@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"regexp"
 	"time"
@@ -91,4 +92,18 @@ func notifyEmail(post string, envConfig *viper.Viper) error {
 	client := sendgrid.NewSendClient(envConfig.GetString(SendGridAPIKey))
 	_, err := client.Send(message)
 	return err
+}
+
+// CmdExec ...
+func CmdExec(args ...string) (string, error) {
+	baseCmd := args[0]
+	cmdArgs := args[1:]
+
+	cmd := exec.Command(baseCmd, cmdArgs...)
+	out, err := cmd.Output()
+	if err != nil {
+		return "", err
+	}
+
+	return string(out), nil
 }
