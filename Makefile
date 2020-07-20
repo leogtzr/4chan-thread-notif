@@ -1,13 +1,12 @@
 .DEFAULT_GOAL := install
 
-BIN_FILE=4chan-thread-notifs
+BIN_FILE=4chan-thread-notif
 
 install:
 	go build -o "${BIN_FILE}"
 
 clean:
 	go clean
-	rm --force interview
 	rm --force cp.out
 
 test:
