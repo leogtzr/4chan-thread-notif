@@ -1,7 +1,8 @@
 # 4chan-thread-notif
 Little go script that will notify me when there is a new mention to my post in a thread in a 4chan board :)
-
 The script will send you an email to the specified email address.
+
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/leogtzr)
 
 ### Requirements
 
