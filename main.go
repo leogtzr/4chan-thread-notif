@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"log"
 	"os"
 	"path/filepath"
@@ -80,6 +81,9 @@ func main() {
 			counts[*post] = postCount
 			log.Printf("Post occurrence count changed for %s, triggering notification.\n", *post)
 			err := notifyEmail(*post, envConfig)
+			if err != nil {
+				fmt.Println(err)
+			}
 			checkErrorCount(err, envConfig, &errCount)
 		}
 	}

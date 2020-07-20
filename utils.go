@@ -88,7 +88,7 @@ func notifyEmail(post string, envConfig *viper.Viper) error {
 	to := mail.NewEmail("Leo Gtz", envConfig.GetString(EmailTo))
 
 	message := mail.NewSingleEmail(from, subject, to, msg, msg)
-	client := sendgrid.NewSendClient(envConfig.GetString("sendgrid_api_key"))
+	client := sendgrid.NewSendClient(envConfig.GetString(SendGridAPIKey))
 	_, err := client.Send(message)
 	return err
 }
