@@ -41,4 +41,8 @@ go build -o "4chan-thread-notifs"
 ./4chan-thread-notifs -board lit -id 15897101 -post 15899180
 ```
 
-![img](imgs/img.png)
+### Email notifications
+![img](imgs/email.png)
+
+### Ubuntu Desktop Notifications
+![img](imgs/notify-send.png)
