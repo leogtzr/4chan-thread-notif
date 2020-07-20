@@ -33,8 +33,6 @@ func main() {
 		log.Fatal("-post option empty")
 	}
 
-	postStats := PostStats{Board: *board, Count: 0, Post: *post}
-
 	executablePath, err := binaryPath()
 	if err != nil {
 		panic(err)
@@ -60,6 +58,9 @@ func main() {
 	defer logFile.Close()
 	log.SetOutput(logFile)
 
+	postStats := PostStats{Board: *board, Count: 0, Post: *post}
+	postEmailNotifier := UbuntuNotifySendNotifier{Config: envConfig, Post: postStats}
+
 	client := createHTTPClient(envConfig)
 	url := buildURL(*board, *id)
 	body, err := getResponse(client, url)
@@ -82,7 +83,7 @@ func main() {
 		if postCount != postStats.Count {
 			postStats.Count = postCount
 			log.Printf("Post occurrence count changed for %s, triggering notification.\n", *post)
-			err := notifyEmail(*post, envConfig)
+			err := notify(postEmailNotifier)
 			if err != nil {
 				fmt.Println(err)
 			}

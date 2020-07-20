@@ -107,3 +107,7 @@ func CmdExec(args ...string) (string, error) {
 
 	return string(out), nil
 }
+
+func notify(notifier Notifier) error {
+	return notifier.notify()
+}

@@ -56,7 +56,7 @@ func (untf UbuntuNotifySendNotifier) notify() error {
 	title := fmt.Sprintf("Somebody mentioned you in a 4chan thread (%s)", untf.Post.Post)
 	msg := title
 
-	_, err = CmdExec("/usr/bin/which", title, msg)
+	_, err = CmdExec("/usr/bin/notify-send", title, msg)
 	if err != nil {
 		return err
 	}
